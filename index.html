@@ -51,7 +51,14 @@
       margin: 16px 0 8px 2px;
     }
 
-    /* 2 Columns Grid sa Mobile para sa mga Category */
+    /* 1 Column Grid para sa Face, Eyes, Lips */
+    .single-column-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    /* 2 Columns Grid para sa Tools at Remover */
     .categories-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -93,9 +100,9 @@
       <h1>GLOW EDIT</h1>
     </header>
 
-    <!-- Face Makeup Section -->
+    <!-- Face Makeup Section (1 Column) -->
     <div class="section-title">Face Makeup</div>
-    <div class="categories-list">
+    <div class="single-column-list">
       <a href="foundation.html" class="category-btn"><span>Foundation</span><span>→</span></a>
       <a href="concealer.html" class="category-btn"><span>Concealer</span><span>→</span></a>
       <a href="bb-cc-cream.html" class="category-btn"><span>BB / CC Cream</span><span>→</span></a>
@@ -107,9 +114,9 @@
       <a href="setting-spray.html" class="category-btn"><span>Setting Spray</span><span>→</span></a>
     </div>
 
-    <!-- Eye Makeup Section -->
+    <!-- Eye Makeup Section (1 Column) -->
     <div class="section-title">Eye Makeup</div>
-    <div class="categories-list">
+    <div class="single-column-list">
       <a href="eyebrow-pencil.html" class="category-btn"><span>Eyebrow Pencil</span><span>→</span></a>
       <a href="eyebrow-gel.html" class="category-btn"><span>Eyebrow Gel</span><span>→</span></a>
       <a href="eyeshadow.html" class="category-btn"><span>Eyeshadow</span><span>→</span></a>
@@ -118,9 +125,9 @@
       <a href="false-eyelashes.html" class="category-btn"><span>False Eyelashes</span><span>→</span></a>
     </div>
 
-    <!-- Lip Makeup Section -->
+    <!-- Lip Makeup Section (1 Column) -->
     <div class="section-title">Lip Makeup</div>
-    <div class="categories-list">
+    <div class="single-column-list">
       <a href="lipstick.html" class="category-btn"><span>Lipstick</span><span>→</span></a>
       <a href="lip-tint.html" class="category-btn"><span>Lip Tint</span><span>→</span></a>
       <a href="lip-gloss.html" class="category-btn"><span>Lip Gloss</span><span>→</span></a>
@@ -129,7 +136,7 @@
       <a href="lip-matte.html" class="category-btn"><span>Lip Matte</span><span>→</span></a>
     </div>
 
-    <!-- Tools Section -->
+    <!-- Tools Section (2 Columns) -->
     <div class="section-title">Tools</div>
     <div class="categories-list">
       <a href="makeup-brush.html" class="category-btn"><span>Makeup Brush</span><span>→</span></a>
@@ -140,7 +147,7 @@
       <a href="makeup-mirror.html" class="category-btn"><span>Makeup Mirror</span><span>→</span></a>
     </div>
 
-    <!-- Remover Section -->
+    <!-- Remover Section (2 Columns) -->
     <div class="section-title">Remover</div>
     <div class="categories-list">
       <a href="micellar-water.html" class="category-btn"><span>Micellar Water</span><span>→</span></a>
