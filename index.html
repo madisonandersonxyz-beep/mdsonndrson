@@ -40,7 +40,7 @@
       letter-spacing: 1px;
     }
 
-    /* Choices sa taas (Category Tabs - Scrollable kung marami) */
+    /* Categories sa taas (Scrollable) */
     .top-choices {
       display: flex;
       gap: 8px;
@@ -69,10 +69,10 @@
       border-color: #111111;
     }
 
-    /* Listahan ng Affiliate Links */
+    /* 2 Columns Grid sa Mobile para sa mga Choices */
     .choices-list {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
 
@@ -81,14 +81,15 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: 15px 16px;
+      padding: 14px 12px;
       border: 1px solid #E0E0E0;
       border-radius: 8px;
       background-color: #FFFFFF;
       color: #111111;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
+      text-align: left;
     }
 
     .choice-btn:active {
@@ -121,7 +122,7 @@
       <button class="tab-btn" data-cat="sets">Sets & Kits</button>
     </div>
 
-    <!-- Product Choices List -->
+    <!-- Product Choices List (2 Columns Grid) -->
     <div class="choices-list" id="choicesList"></div>
 
     <footer>
@@ -135,7 +136,7 @@
       // 1. Face Makeup
       { category: "face", title: "Foundation", link: "https://www.sephora.com/" },
       { category: "face", title: "Concealer", link: "https://www.sephora.com/" },
-      { category: "face", title: "BB Cream / CC Cream", link: "https://www.ulta.com/" },
+      { category: "face", title: "BB / CC Cream", link: "https://www.ulta.com/" },
       { category: "face", title: "Primer", link: "https://www.sephora.com/" },
       { category: "face", title: "Face Powder", link: "https://www.ulta.com/" },
       { category: "face", title: "Blush", link: "https://www.sephora.com/" },
@@ -164,20 +165,20 @@
       { category: "tools", title: "Beauty Blender", link: "https://www.amazon.com/" },
       { category: "tools", title: "Makeup Sponge", link: "https://www.amazon.com/" },
       { category: "tools", title: "Eyelash Curler", link: "https://www.amazon.com/" },
-      { category: "tools", title: "Makeup Organizer", link: "https://www.amazon.com/" },
+      { category: "tools", title: "Organizer", link: "https://www.amazon.com/" },
       { category: "tools", title: "Makeup Mirror", link: "https://www.amazon.com/" },
 
       // 5. Makeup Remover
       { category: "remover", title: "Micellar Water", link: "https://www.amazon.com/" },
       { category: "remover", title: "Cleansing Balm", link: "https://www.ulta.com/" },
-      { category: "remover", title: "Makeup Remover Wipes", link: "https://www.amazon.com/" },
+      { category: "remover", title: "Remover Wipes", link: "https://www.amazon.com/" },
       { category: "remover", title: "Cleansing Oil", link: "https://www.ulta.com/" },
 
       // 6. Makeup Sets & Kits
-      { category: "sets", title: "Complete Makeup Set", link: "https://www.amazon.com/" },
+      { category: "sets", title: "Complete Set", link: "https://www.amazon.com/" },
       { category: "sets", title: "Eyeshadow Palette", link: "https://www.sephora.com/" },
       { category: "sets", title: "Lipstick Set", link: "https://www.sephora.com/" },
-      { category: "sets", title: "Travel Makeup Kit", link: "https://www.amazon.com/" }
+      { category: "sets", title: "Travel Kit", link: "https://www.amazon.com/" }
     ];
 
     const list = document.getElementById("choicesList");
