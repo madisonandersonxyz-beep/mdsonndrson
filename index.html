@@ -32,7 +32,7 @@
 
     header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 24px;
     }
 
     header h1 {
@@ -41,43 +41,14 @@
       letter-spacing: 1px;
     }
 
-    /* Categories sa taas (Scrollable) */
-    .top-choices {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-      scrollbar-width: none;
-    }
-    .top-choices::-webkit-scrollbar { display: none; }
-
-    .tab-btn {
-      flex: 0 0 auto;
-      padding: 8px 16px;
-      border: 1px solid #E0E0E0;
-      border-radius: 99px;
-      background-color: #FAFAFA;
-      color: #555555;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .tab-btn.active {
-      background-color: #111111;
-      color: #FFFFFF;
-      border-color: #111111;
-    }
-
-    /* 2 Columns Grid sa Mobile para sa mga Choices */
-    .choices-list {
+    /* 2 Columns Grid sa Mobile para sa mga Category */
+    .categories-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
 
-    .choice-btn {
+    .category-btn {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -93,7 +64,7 @@
       text-align: left;
     }
 
-    .choice-btn:active {
+    .category-btn:active {
       background-color: #EFECE6;
     }
 
@@ -112,101 +83,59 @@
       <h1>GLOW EDIT</h1>
     </header>
 
-    <!-- Categories sa taas -->
-    <div class="top-choices" id="topChoices">
-      <button class="tab-btn active" data-cat="all">All</button>
-      <button class="tab-btn" data-cat="face">Face</button>
-      <button class="tab-btn" data-cat="eyes">Eyes</button>
-      <button class="tab-btn" data-cat="lips">Lips</button>
-      <button class="tab-btn" data-cat="tools">Tools</button>
-      <button class="tab-btn" data-cat="remover">Remover</button>
-      <button class="tab-btn" data-cat="sets">Sets</button>
-    </div>
+    <!-- Purong listahan ng mga Category na nakaka-link sa kani-kanilang HTML file -->
+    <div class="categories-list">
+      <!-- 1. Face Makeup -->
+      <a href="foundation.html" class="category-btn"><span>Foundation</span><span>→</span></a>
+      <a href="concealer.html" class="category-btn"><span>Concealer</span><span>→</span></a>
+      <a href="bb-cc-cream.html" class="category-btn"><span>BB / CC Cream</span><span>→</span></a>
+      <a href="primer.html" class="category-btn"><span>Primer</span><span>→</span></a>
+      <a href="face-powder.html" class="category-btn"><span>Face Powder</span><span>→</span></a>
+      <a href="blush.html" class="category-btn"><span>Blush</span><span>→</span></a>
+      <a href="highlighter.html" class="category-btn"><span>Highlighter</span><span>→</span></a>
+      <a href="contour.html" class="category-btn"><span>Contour</span><span>→</span></a>
+      <a href="setting-spray.html" class="category-btn"><span>Setting Spray</span><span>→</span></a>
 
-    <!-- Product Choices List (2 Columns Grid) -->
-    <div class="choices-list" id="choicesList"></div>
+      <!-- 2. Eye Makeup -->
+      <a href="eyebrow-pencil.html" class="category-btn"><span>Eyebrow Pencil</span><span>→</span></a>
+      <a href="eyebrow-gel.html" class="category-btn"><span>Eyebrow Gel</span><span>→</span></a>
+      <a href="eyeshadow.html" class="category-btn"><span>Eyeshadow</span><span>→</span></a>
+      <a href="eyeliner.html" class="category-btn"><span>Eyeliner</span><span>→</span></a>
+      <a href="mascara.html" class="category-btn"><span>Mascara</span><span>→</span></a>
+      <a href="false-eyelashes.html" class="category-btn"><span>False Eyelashes</span><span>→</span></a>
+
+      <!-- 3. Lip Makeup -->
+      <a href="lipstick.html" class="category-btn"><span>Lipstick</span><span>→</span></a>
+      <a href="lip-tint.html" class="category-btn"><span>Lip Tint</span><span>→</span></a>
+      <a href="lip-gloss.html" class="category-btn"><span>Lip Gloss</span><span>→</span></a>
+      <a href="lip-balm.html" class="category-btn"><span>Lip Balm</span><span>→</span></a>
+      <a href="lip-liner.html" class="category-btn"><span>Lip Liner</span><span>→</span></a>
+      <a href="lip-matte.html" class="category-btn"><span>Lip Matte</span><span>→</span></a>
+
+      <!-- 4. Tools -->
+      <a href="makeup-brush.html" class="category-btn"><span>Makeup Brush</span><span>→</span></a>
+      <a href="beauty-blender.html" class="category-btn"><span>Beauty Blender</span><span>→</span></a>
+      <a href="makeup-sponge.html" class="category-btn"><span>Makeup Sponge</span><span>→</span></a>
+      <a href="eyelash-curler.html" class="category-btn"><span>Eyelash Curler</span><span>→</span></a>
+      <a href="organizer.html" class="category-btn"><span>Organizer</span><span>→</span></a>
+      <a href="makeup-mirror.html" class="category-btn"><span>Makeup Mirror</span><span>→</span></a>
+
+      <!-- 5. Remover -->
+      <a href="micellar-water.html" class="category-btn"><span>Micellar Water</span><span>→</span></a>
+      <a href="cleansing-balm.html" class="category-btn"><span>Cleansing Balm</span><span>→</span></a>
+      <a href="remover-wipes.html" class="category-btn"><span>Remover Wipes</span><span>→</span></a>
+      <a href="cleansing-oil.html" class="category-btn"><span>Cleansing Oil</span><span>→</span></a>
+
+      <!-- 6. Sets -->
+      <a href="complete-set.html" class="category-btn"><span>Complete Set</span><span>→</span></a>
+      <a href="eyeshadow-palette.html" class="category-btn"><span>Eyeshadow Palette</span><span>→</span></a>
+      <a href="lipstick-set.html" class="category-btn"><span>Lipstick Set</span><span>→</span></a>
+      <a href="travel-kit.html" class="category-btn"><span>Travel Kit</span><span>→</span></a>
+    </div>
 
     <footer>
       Affiliate Disclosure: Commissions earned on qualifying US links.
     </footer>
   </div>
-
-  <script>
-    // Listahan ng mga kategorya at ang kani-kanilang hiwalay na HTML files
-    const makeupCategories = [
-      // Face
-      { category: "face", title: "Foundation", link: "foundation.html" },
-      { category: "face", title: "Concealer", link: "concealer.html" },
-      { category: "face", title: "BB / CC Cream", link: "bb-cc-cream.html" },
-      { category: "face", title: "Primer", link: "primer.html" },
-      { category: "face", title: "Face Powder", link: "face-powder.html" },
-      { category: "face", title: "Blush", link: "blush.html" },
-      { category: "face", title: "Highlighter", link: "highlighter.html" },
-      { category: "face", title: "Contour", link: "contour.html" },
-      { category: "face", title: "Setting Spray", link: "setting-spray.html" },
-
-      // Eyes
-      { category: "eyes", title: "Eyebrow Pencil", link: "eyebrow-pencil.html" },
-      { category: "eyes", title: "Eyebrow Gel", link: "eyebrow-gel.html" },
-      { category: "eyes", title: "Eyeshadow", link: "eyeshadow.html" },
-      { category: "eyes", title: "Eyeliner", link: "eyeliner.html" },
-      { category: "eyes", title: "Mascara", link: "mascara.html" },
-      { category: "eyes", title: "False Eyelashes", link: "false-eyelashes.html" },
-
-      // Lips
-      { category: "lips", title: "Lipstick", link: "lipstick.html" },
-      { category: "lips", title: "Lip Tint", link: "lip-tint.html" },
-      { category: "lips", title: "Lip Gloss", link: "lip-gloss.html" },
-      { category: "lips", title: "Lip Balm", link: "lip-balm.html" },
-      { category: "lips", title: "Lip Liner", link: "lip-liner.html" },
-      { category: "lips", title: "Lip Matte", link: "lip-matte.html" },
-
-      // Tools
-      { category: "tools", title: "Makeup Brush", link: "makeup-brush.html" },
-      { category: "tools", title: "Beauty Blender", link: "beauty-blender.html" },
-      { category: "tools", title: "Makeup Sponge", link: "makeup-sponge.html" },
-      { category: "tools", title: "Eyelash Curler", link: "eyelash-curler.html" },
-      { category: "tools", title: "Organizer", link: "organizer.html" },
-      { category: "tools", title: "Makeup Mirror", link: "makeup-mirror.html" },
-
-      // Remover
-      { category: "remover", title: "Micellar Water", link: "micellar-water.html" },
-      { category: "remover", title: "Cleansing Balm", link: "cleansing-balm.html" },
-      { category: "remover", title: "Remover Wipes", link: "remover-wipes.html" },
-      { category: "remover", title: "Cleansing Oil", link: "cleansing-oil.html" },
-
-      // Sets
-      { category: "sets", title: "Complete Set", link: "complete-set.html" },
-      { category: "sets", title: "Eyeshadow Palette", link: "eyeshadow-palette.html" },
-      { category: "sets", title: "Lipstick Set", link: "lipstick-set.html" },
-      { category: "sets", title: "Travel Kit", link: "travel-kit.html" }
-    ];
-
-    const list = document.getElementById("choicesList");
-    const buttons = document.querySelectorAll(".tab-btn");
-
-    function renderChoices(selectedCat = "all") {
-      const filtered = selectedCat === "all"
-        ? makeupCategories
-        : makeupCategories.filter(item => item.category === selectedCat);
-
-      list.innerHTML = filtered.map(item => `
-        <a href="${item.link}" class="choice-btn">
-          <span>${item.title}</span>
-          <span>→</span>
-        </a>
-      `).join("");
-    }
-
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        buttons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        renderChoices(btn.dataset.cat);
-      });
-    });
-
-    renderChoices();
-  </script>
 </body>
 </html>
