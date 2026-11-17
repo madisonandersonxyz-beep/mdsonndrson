@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Highlighter — GLOW EDIT</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #F7F4F0;
+      color: #111111;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background-color: #FFFFFF;
+      padding: 24px 16px 40px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.03);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    header h1 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Back button pabalik sa index.html sa labas (gamit ang ../) */
+    .back-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+
+    .category-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    /* 1 Column Layout para sa mga produkto */
+    .choices-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .choice-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #E8E2DA;
+      border-radius: 8px;
+      background-color: #FAFAF8;
+      color: #111111;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .choice-card:active {
+      background-color: #EFECE6;
+    }
+
+    .product-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Sukat at itsura ng Product Image */
+    .product-img {
+      width: 45px;
+      height: 45px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #E0D9D0;
+      background-color: #FFF;
+    }
+
+    footer {
+      margin-top: auto;
+      padding-top: 32px;
+      text-align: center;
+      font-size: 11px;
+      color: #777777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>GLOW EDIT</h1>
+    </header>
+
+    <!-- Pindutan pabalik sa main index.html (gamit ang '../' dahil nasa loob ka ng folder) -->
+    <a href="../index.html" class="back-bar">← Back to Categories</a>
+
+    <div class="category-title">
+      Highlighter
+    </div>
+
+    <!-- Listahan ng Produkto na may Image -->
+    <div class="choices-list">
+      <a href="https://www.amazon.com/" target="_blank" rel="nofollow sponsored noopener" class="choice-card">
+        <div class="product-info">
+          <!-- Direktang tatawagin ang image dahil magkasama sila sa iisang folder -->
+          <img src="highlighter.jpg" alt="e.l.f. Halo Glow" class="product-img" />
+          <span>e.l.f. Halo Glow</span>
+        </div>
+        <span>↗</span>
+      </a>
+    </div>
+
+    <footer>
+      Affiliate Disclosure: Commissions earned on qualifying US links.
+    </footer>
+  </div>
+</body>
+</html>
