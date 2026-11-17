@@ -31,7 +31,7 @@
 
     header {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
 
     header h1 {
@@ -40,6 +40,33 @@
       letter-spacing: 1px;
     }
 
+    /* Choices sa taas (Category Tabs) */
+    .top-choices {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      border: 1px solid #E0E0E0;
+      border-radius: 99px;
+      background-color: #FFFFFF;
+      color: #555555;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background-color: #111111;
+      color: #FFFFFF;
+      border-color: #111111;
+    }
+
+    /* Listahan ng Affiliate Links */
     .choices-list {
       display: flex;
       flex-direction: column;
@@ -59,7 +86,6 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 600;
-      transition: background-color 0.15s ease;
     }
 
     .choice-btn:active {
@@ -81,6 +107,15 @@
       <h1>GLOW EDIT</h1>
     </header>
 
+    <!-- Choices sa taas -->
+    <div class="top-choices" id="topChoices">
+      <button class="tab-btn active" data-cat="all">All</button>
+      <button class="tab-btn" data-cat="face">Face</button>
+      <button class="tab-btn" data-cat="lips">Lips</button>
+      <button class="tab-btn" data-cat="eyes">Eyes</button>
+    </div>
+
+    <!-- Product Choices -->
     <div class="choices-list" id="choicesList"></div>
 
     <footer>
@@ -89,23 +124,42 @@
   </div>
 
   <script>
-    // PALITAN O DAGDAGAN LANG ANG CHOICES AT LINKS MO DITO
+    // PALITAN O DAGDAGAN LANG ANG CHOICES AT AFFILIATE LINKS MO DITO
+    // Ang category ay pwedeng: "face", "lips", o "eyes"
     const makeupChoices = [
-      { title: "Rare Beauty — Soft Pinch Liquid Blush", link: "https://www.sephora.com/" },
-      { title: "Summer Fridays — Lip Butter Balm", link: "https://www.sephora.com/" },
-      { title: "e.l.f. Cosmetics — Halo Glow Liquid Filter", link: "https://www.ulta.com/" },
-      { title: "Tower 28 — MakeWaves Mascara", link: "https://www.amazon.com/" },
-      { title: "NYX — Fat Oil Lip Drip Gloss", link: "https://www.amazon.com/" }
+      { category: "face", title: "Rare Beauty — Soft Pinch Liquid Blush", link: "https://www.sephora.com/" },
+      { category: "lips", title: "Summer Fridays — Lip Butter Balm", link: "https://www.sephora.com/" },
+      { category: "face", title: "e.l.f. Cosmetics — Halo Glow Liquid Filter", link: "https://www.ulta.com/" },
+      { category: "eyes", title: "Tower 28 — MakeWaves Mascara", link: "https://www.amazon.com/" },
+      { category: "lips", title: "NYX — Fat Oil Lip Drip Gloss", link: "https://www.amazon.com/" },
+      { category: "face", title: "Kosås — Revealer Concealer", link: "https://www.sephora.com/" }
     ];
 
     const list = document.getElementById("choicesList");
+    const buttons = document.querySelectorAll(".tab-btn");
 
-    list.innerHTML = makeupChoices.map(item => `
-      <a href="${item.link}" target="_blank" rel="nofollow sponsored noopener" class="choice-btn">
-        <span>${item.title}</span>
-        <span>→</span>
-      </a>
-    `).join("");
+    function renderChoices(selectedCat = "all") {
+      const filtered = selectedCat === "all"
+        ? makeupChoices
+        : makeupChoices.filter(item => item.category === selectedCat);
+
+      list.innerHTML = filtered.map(item => `
+        <a href="${item.link}" target="_blank" rel="nofollow sponsored noopener" class="choice-btn">
+          <span>${item.title}</span>
+          <span>→</span>
+        </a>
+      `).join("");
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderChoices(btn.dataset.cat);
+      });
+    });
+
+    renderChoices();
   </script>
 </body>
 </html>
