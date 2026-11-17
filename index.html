@@ -127,14 +127,14 @@
     }
 
     .creator-hero {
-      padding: 18px 16px 12px;
+      padding: 12px 16px 8px;
       text-align: center;
     }
 
     .avatar-ring {
-      width: 78px;
-      height: 78px;
-      margin: 0 auto 10px;
+      width: 68px;
+      height: 68px;
+      margin: 0 auto;
       border-radius: 50%;
       padding: 3px;
       background: linear-gradient(135deg, var(--accent), var(--gold));
@@ -146,21 +146,6 @@
       object-fit: cover;
       border-radius: 50%;
       border: 2px solid var(--bg);
-    }
-
-    .creator-hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 700;
-      line-height: 1.15;
-    }
-
-    .creator-bio {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 4px;
-      max-width: 340px;
-      margin-inline: auto;
     }
 
     .stories-row {
@@ -384,17 +369,12 @@
       margin-bottom: 8px;
     }
 
-    .price-row {
+    .card-footer-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       margin-top: auto;
       padding-top: 6px;
-    }
-
-    .price {
-      font-size: 14px;
-      font-weight: 700;
     }
 
     .shop-btn {
@@ -402,7 +382,7 @@
       color: #fff;
       border: none;
       border-radius: var(--radius-pill);
-      padding: 6px 12px;
+      padding: 6px 14px;
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
@@ -648,8 +628,6 @@
       <div class="avatar-ring">
         <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80" alt="Beauty Creator Profile">
       </div>
-      <h1>My Everyday US Makeup Bag</h1>
-      <p class="creator-bio">Tested in real daylight. Tap any item to shop my exact shades at Sephora, Ulta & Amazon.</p>
     </section>
 
     <div class="stories-row" id="storyFilters">
@@ -692,8 +670,8 @@
       <p class="section-sub">Switch between my high-end Sephora staples and budget Ulta/Amazon dupes.</p>
 
       <div class="routine-tabs">
-        <button class="routine-tab active" data-routine="sephora">Sephora Edit ($118)</button>
-        <button class="routine-tab" data-routine="drugstore">Drugstore Dupes ($44)</button>
+        <button class="routine-tab active" data-routine="sephora">Sephora Edit</button>
+        <button class="routine-tab" data-routine="drugstore">Drugstore Dupes</button>
       </div>
 
       <div id="routineList"></div>
@@ -749,7 +727,6 @@
         id: 1,
         brand: "Rare Beauty",
         name: "Soft Pinch Liquid Blush",
-        price: "$23.00",
         category: "face",
         story: "viral",
         badge: "Best Seller",
@@ -764,7 +741,6 @@
         id: 2,
         brand: "Summer Fridays",
         name: "Lip Butter Balm",
-        price: "$24.00",
         category: "lips",
         story: "clean-girl",
         badge: "Holy Grail",
@@ -779,7 +755,6 @@
         id: 3,
         brand: "e.l.f. Cosmetics",
         name: "Halo Glow Liquid Filter",
-        price: "$14.00",
         category: "face",
         story: "drugstore",
         badge: "Under $15",
@@ -794,7 +769,6 @@
         id: 4,
         brand: "Tower 28",
         name: "MakeWaves Lengthening Mascara",
-        price: "$20.00",
         category: "eyes",
         story: "clean-girl",
         badge: "Sensitive Eyes",
@@ -809,7 +783,6 @@
         id: 5,
         brand: "NYX Professional Makeup",
         name: "Fat Oil Lip Drip Gloss",
-        price: "$9.00",
         category: "lips",
         story: "drugstore",
         badge: "Viral Dupe",
@@ -824,7 +797,6 @@
         id: 6,
         brand: "Kosås",
         name: "Revealer Super Creamy Concealer",
-        price: "$30.00",
         category: "face",
         story: "viral",
         badge: "Crease-Proof",
@@ -839,16 +811,16 @@
 
     const routinesData = {
       sephora: [
-        { step: "Step 1 • Base", name: "Saie Glowy Super Gel ($28)", url: "https://www.sephora.com/" },
-        { step: "Step 2 • Conceal", name: "Kosås Revealer Concealer ($30)", url: "https://www.sephora.com/" },
-        { step: "Step 3 • Cheek", name: "Rare Beauty Blush in Happy ($23)", url: "https://www.sephora.com/" },
-        { step: "Step 4 • Lip", name: "Summer Fridays Lip Balm ($24)", url: "https://www.sephora.com/" }
+        { step: "Step 1 • Base", name: "Saie Glowy Super Gel", url: "https://www.sephora.com/" },
+        { step: "Step 2 • Conceal", name: "Kosås Revealer Concealer", url: "https://www.sephora.com/" },
+        { step: "Step 3 • Cheek", name: "Rare Beauty Blush in Happy", url: "https://www.sephora.com/" },
+        { step: "Step 4 • Lip", name: "Summer Fridays Lip Balm", url: "https://www.sephora.com/" }
       ],
       drugstore: [
-        { step: "Step 1 • Base", name: "e.l.f. Halo Glow Liquid Filter ($14)", url: "https://www.ulta.com/" },
-        { step: "Step 2 • Conceal", name: "NYX Bare With Me Concealer ($11)", url: "https://www.amazon.com/" },
-        { step: "Step 3 • Cheek", name: "Milani Cheek Kiss Liquid Blush ($10)", url: "https://www.ulta.com/" },
-        { step: "Step 4 • Lip", name: "NYX Fat Oil Lip Drip ($9)", url: "https://www.amazon.com/" }
+        { step: "Step 1 • Base", name: "e.l.f. Halo Glow Liquid Filter", url: "https://www.ulta.com/" },
+        { step: "Step 2 • Conceal", name: "NYX Bare With Me Concealer", url: "https://www.amazon.com/" },
+        { step: "Step 3 • Cheek", name: "Milani Cheek Kiss Liquid Blush", url: "https://www.ulta.com/" },
+        { step: "Step 4 • Lip", name: "NYX Fat Oil Lip Drip", url: "https://www.amazon.com/" }
       ]
     };
 
@@ -908,8 +880,7 @@
               <div class="brand-name">${product.brand}</div>
               <h3 class="product-title">${product.name}</h3>
               <p class="shade-note">${product.shade}</p>
-              <div class="price-row">
-                <span class="price">${product.price}</span>
+              <div class="card-footer-row">
                 <button class="shop-btn">Shop →</button>
               </div>
             </div>
@@ -924,7 +895,7 @@
 
       document.getElementById("modalImg").src = product.image;
       document.getElementById("modalBrand").textContent = product.brand;
-      document.getElementById("modalTitle").textContent = `${product.name} — ${product.price}`;
+      document.getElementById("modalTitle").textContent = product.name;
       document.getElementById("modalShade").textContent = product.shade;
       document.getElementById("modalReview").textContent = product.review;
 
@@ -954,7 +925,7 @@
           <div class="wishlist-item">
             <div onclick="closeModals(); openProductModal(${item.id});" style="cursor:pointer;">
               <div style="font-size:11px; font-weight:700; color:var(--accent);">${item.brand}</div>
-              <div style="font-size:13px; font-weight:600;">${item.name} (${item.price})</div>
+              <div style="font-size:13px; font-weight:600;">${item.name}</div>
             </div>
             <button onclick="toggleSave(${item.id}); openSavedModal();" style="background:none; border:none; color:var(--text-muted); font-size:12px; cursor:pointer;">Remove</button>
           </div>
