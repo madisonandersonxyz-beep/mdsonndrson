@@ -41,7 +41,6 @@
       justify-content: center;
     }
 
-    /* Mobile App Container */
     .app-shell {
       width: 100%;
       max-width: 480px;
@@ -52,7 +51,6 @@
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
     }
 
-    /* US FTC Top Disclosure Bar */
     .ftc-bar {
       background: #1C1917;
       color: #F5EFEA;
@@ -62,4 +60,975 @@
       letter-spacing: 0.01em;
     }
 
-    /*
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(250, 247, 245, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .brand-logo span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .icon-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      font-size: 16px;
+    }
+
+    .badge-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      min-width: 18px;
+      height: 18px;
+      border-radius: 99px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+    }
+
+    .creator-hero {
+      padding: 18px 16px 12px;
+      text-align: center;
+    }
+
+    .avatar-ring {
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+    }
+
+    .avatar-ring img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+    }
+
+    .creator-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .creator-bio {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      max-width: 340px;
+      margin-inline: auto;
+    }
+
+    .stories-row {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding: 12px 16px;
+      scrollbar-width: none;
+    }
+    .stories-row::-webkit-scrollbar { display: none; }
+
+    .story-item {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text-main);
+    }
+
+    .story-circle {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      padding: 2px;
+      border: 2px solid var(--border);
+      transition: all 0.2s ease;
+    }
+
+    .story-item.active .story-circle {
+      border-color: var(--accent);
+      transform: scale(1.04);
+    }
+
+    .story-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .story-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .story-item.active .story-label {
+      color: var(--accent);
+    }
+
+    .search-wrap {
+      padding: 4px 16px 12px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 11px 16px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-main);
+      outline: none;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+    }
+
+    .filter-toolbar {
+      padding: 0 16px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .category-pills {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex: 1;
+    }
+    .category-pills::-webkit-scrollbar { display: none; }
+
+    .pill-btn {
+      flex: 0 0 auto;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pill-btn.active {
+      background: var(--text-main);
+      color: #fff;
+      border-color: var(--text-main);
+    }
+
+    .view-toggle {
+      flex: 0 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-main);
+    }
+
+    .products-grid {
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .products-grid.single-col {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1.05;
+      background: var(--surface-soft);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .products-grid.single-col .card-img-wrap {
+      aspect-ratio: 16 / 10;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tag-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(28, 25, 23, 0.85);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+    }
+
+    .save-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-body {
+      padding: 11px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .brand-name {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .product-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin: 2px 0 4px;
+      line-height: 1.3;
+      cursor: pointer;
+    }
+
+    .shade-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+
+    .price {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .shop-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .routine-section {
+      margin: 24px 16px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .routine-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      background: var(--surface-soft);
+      padding: 4px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 14px;
+    }
+
+    .routine-tab {
+      border: none;
+      background: transparent;
+      padding: 8px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .routine-tab.active {
+      background: var(--surface);
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .routine-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 10px;
+    }
+
+    .routine-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .routine-step {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .routine-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .routine-link {
+      background: var(--text-main);
+      color: #fff;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .footer-disclosure {
+      padding: 20px 16px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 8px 0 12px;
+      z-index: 45;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .nav-btn.active {
+      color: var(--accent);
+    }
+
+    .nav-btn span.nav-icon {
+      font-size: 18px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 25, 23, 0.55);
+      z-index: 60;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .bottom-sheet {
+      width: 100%;
+      max-width: 480px;
+      background: var(--surface);
+      border-radius: 24px 24px 0 0;
+      padding: 16px 20px 28px;
+      max-height: 88vh;
+      overflow-y: auto;
+      animation: slideUp 0.25s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .sheet-handle {
+      width: 40px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 99px;
+      margin: 0 auto 14px;
+    }
+
+    .sheet-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      margin-bottom: 14px;
+    }
+
+    .retailer-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .retailer-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 16px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .btn-sephora {
+      background: #1C1917;
+      color: #FFFFFF;
+    }
+
+    .btn-ulta {
+      background: #F4E7E1;
+      color: #1C1917;
+      border: 1px solid #E2CEC5;
+    }
+
+    .btn-amazon {
+      background: #FFF6E5;
+      color: #1C1917;
+      border: 1px solid #F0DCB4;
+    }
+
+    .wishlist-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <div class="ftc-bar">
+      Affiliate Disclosure: Commissions earned on qualifying US links at no extra cost to you.
+    </div>
+
+    <header class="top-header">
+      <a href="#" class="brand-logo">GLOW <span>Edit</span></a>
+      <div class="header-actions">
+        <button class="icon-btn" id="openSavedBtn" aria-label="Saved Favorites">
+          ♥
+          <span class="badge-count" id="savedCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="creator-hero">
+      <div class="avatar-ring">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80" alt="Beauty Creator Profile">
+      </div>
+      <h1>My Everyday US Makeup Bag</h1>
+      <p class="creator-bio">Tested in real daylight. Tap any item to shop my exact shades at Sephora, Ulta & Amazon.</p>
+    </section>
+
+    <div class="stories-row" id="storyFilters">
+      <button class="story-item active" data-story="all">
+        <div class="story-circle"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=200&q=80" alt="All"></div>
+        <span class="story-label">All Finds</span>
+      </button>
+      <button class="story-item" data-story="viral">
+        <div class="story-circle"><img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=200&q=80" alt="Viral"></div>
+        <span class="story-label">TikTok Viral</span>
+      </button>
+      <button class="story-item" data-story="clean-girl">
+        <div class="story-circle"><img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=200&q=80" alt="Clean Girl"></div>
+        <span class="story-label">Clean Girl</span>
+      </button>
+      <button class="story-item" data-story="drugstore">
+        <div class="story-circle"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=200&q=80" alt="Under $15"></div>
+        <span class="story-label">Under $15</span>
+      </button>
+    </div>
+
+    <div class="search-wrap">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search brand, product, or shade (e.g. Rare Beauty, lip oil)...">
+    </div>
+
+    <div class="filter-toolbar">
+      <div class="category-pills" id="categoryPills">
+        <button class="pill-btn active" data-cat="all">All</button>
+        <button class="pill-btn" data-cat="face">Face & Blush</button>
+        <button class="pill-btn" data-cat="lips">Lips</button>
+        <button class="pill-btn" data-cat="eyes">Eyes & Brows</button>
+      </div>
+      <button class="view-toggle" id="viewToggleBtn">1-Col View</button>
+    </div>
+
+    <main class="products-grid" id="productsGrid"></main>
+
+    <section class="routine-section" id="routineSection">
+      <h2 class="section-title">Shop The 5-Minute Routine</h2>
+      <p class="section-sub">Switch between my high-end Sephora staples and budget Ulta/Amazon dupes.</p>
+
+      <div class="routine-tabs">
+        <button class="routine-tab active" data-routine="sephora">Sephora Edit ($118)</button>
+        <button class="routine-tab" data-routine="drugstore">Drugstore Dupes ($44)</button>
+      </div>
+
+      <div id="routineList"></div>
+    </section>
+
+    <footer class="footer-disclosure">
+      <strong>US FTC & Amazon Associates Disclosure:</strong><br>
+      As an Amazon Associate and LTK/ShopMy creator, I earn from qualifying purchases made through links on this page. Prices and availability are accurate for US retailers at the time of posting.
+    </footer>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn active" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <span class="nav-icon">✨</span>
+        <span>Shop All</span>
+      </button>
+      <button class="nav-btn" onclick="document.getElementById('routineSection').scrollIntoView({behavior: 'smooth'})">
+        <span class="nav-icon">💄</span>
+        <span>Routines</span>
+      </button>
+      <button class="nav-btn" id="navSavedBtn">
+        <span class="nav-icon">♥</span>
+        <span>Saved (<span id="navSavedCount">0</span>)</span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="modal-backdrop" id="productModal">
+    <div class="bottom-sheet">
+      <div class="sheet-handle"></div>
+      <img src="" alt="" class="sheet-img" id="modalImg">
+      <div class="brand-name" id="modalBrand"></div>
+      <h3 style="font-size: 20px; margin: 2px 0 6px;" id="modalTitle"></h3>
+      <p style="font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 8px;" id="modalShade"></p>
+      <p style="font-size: 14px; color: var(--text-muted);" id="modalReview"></p>
+      <div class="retailer-buttons" id="modalLinks"></div>
+      <button onclick="closeModals()" style="width:100%; margin-top:12px; padding:12px; border:none; background:var(--surface-soft); border-radius:12px; font-weight:600; cursor:pointer;">Close</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="savedModal">
+    <div class="bottom-sheet">
+      <div class="sheet-handle"></div>
+      <h3 class="section-title">Your Saved Makeup Bag</h3>
+      <p class="section-sub">Tap any saved item to open retailer links.</p>
+      <div id="savedListContainer"></div>
+      <button onclick="closeModals()" style="width:100%; margin-top:14px; padding:12px; border:none; background:var(--surface-soft); border-radius:12px; font-weight:600; cursor:pointer;">Done</button>
+    </div>
+  </div>
+
+  <script>
+    const makeupProducts = [
+      {
+        id: 1,
+        brand: "Rare Beauty",
+        name: "Soft Pinch Liquid Blush",
+        price: "$23.00",
+        category: "face",
+        story: "viral",
+        badge: "Best Seller",
+        shade: "My Shade: Happy (Dewy Cool Pink)",
+        image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
+        review: "One tiny dot gives a lifted, lit-from-within flush that lasts through a 10-hour day without lifting foundation.",
+        sephoraUrl: "https://www.sephora.com/",
+        ultaUrl: "",
+        amazonUrl: ""
+      },
+      {
+        id: 2,
+        brand: "Summer Fridays",
+        name: "Lip Butter Balm",
+        price: "$24.00",
+        category: "lips",
+        story: "clean-girl",
+        badge: "Holy Grail",
+        shade: "My Shade: Vanilla Beige",
+        image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
+        review: "Zero stickiness, cushioned shine, and the sheerest warm nude tint that flatters every lip liner combo.",
+        sephoraUrl: "https://www.sephora.com/",
+        ultaUrl: "",
+        amazonUrl: "https://www.amazon.com/"
+      },
+      {
+        id: 3,
+        brand: "e.l.f. Cosmetics",
+        name: "Halo Glow Liquid Filter",
+        price: "$14.00",
+        category: "face",
+        story: "drugstore",
+        badge: "Under $15",
+        shade: "My Shade: 2 Fair/Light",
+        image: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=600&q=80",
+        review: "Gives that soft-focus glass skin glow under skin tints or worn solo on no-makeup days.",
+        sephoraUrl: "",
+        ultaUrl: "https://www.ulta.com/",
+        amazonUrl: "https://www.amazon.com/"
+      },
+      {
+        id: 4,
+        brand: "Tower 28",
+        name: "MakeWaves Lengthening Mascara",
+        price: "$20.00",
+        category: "eyes",
+        story: "clean-girl",
+        badge: "Sensitive Eyes",
+        shade: "My Shade: Jet (Rich Black)",
+        image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80",
+        review: "Holds a curl all day, never flakes under my eyes, and washes off effortlessly with warm water.",
+        sephoraUrl: "https://www.sephora.com/",
+        ultaUrl: "",
+        amazonUrl: "https://www.amazon.com/"
+      },
+      {
+        id: 5,
+        brand: "NYX Professional Makeup",
+        name: "Fat Oil Lip Drip Gloss",
+        price: "$9.00",
+        category: "lips",
+        story: "drugstore",
+        badge: "Viral Dupe",
+        shade: "My Shade: Follow Back",
+        image: "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?auto=format&fit=crop&w=600&q=80",
+        review: "Plush doe-foot applicator with 12-hour hydration and high-shine finish for under ten bucks.",
+        sephoraUrl: "",
+        ultaUrl: "https://www.ulta.com/",
+        amazonUrl: "https://www.amazon.com/"
+      },
+      {
+        id: 6,
+        brand: "Kosås",
+        name: "Revealer Super Creamy Concealer",
+        price: "$30.00",
+        category: "face",
+        story: "viral",
+        badge: "Crease-Proof",
+        shade: "My Shade: Tone 3.2O",
+        image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80",
+        review: "Medium coverage with caffeine and hyaluronic acid so under-eyes look bright and hydrated, never cakey.",
+        sephoraUrl: "https://www.sephora.com/",
+        ultaUrl: "",
+        amazonUrl: ""
+      }
+    ];
+
+    const routinesData = {
+      sephora: [
+        { step: "Step 1 • Base", name: "Saie Glowy Super Gel ($28)", url: "https://www.sephora.com/" },
+        { step: "Step 2 • Conceal", name: "Kosås Revealer Concealer ($30)", url: "https://www.sephora.com/" },
+        { step: "Step 3 • Cheek", name: "Rare Beauty Blush in Happy ($23)", url: "https://www.sephora.com/" },
+        { step: "Step 4 • Lip", name: "Summer Fridays Lip Balm ($24)", url: "https://www.sephora.com/" }
+      ],
+      drugstore: [
+        { step: "Step 1 • Base", name: "e.l.f. Halo Glow Liquid Filter ($14)", url: "https://www.ulta.com/" },
+        { step: "Step 2 • Conceal", name: "NYX Bare With Me Concealer ($11)", url: "https://www.amazon.com/" },
+        { step: "Step 3 • Cheek", name: "Milani Cheek Kiss Liquid Blush ($10)", url: "https://www.ulta.com/" },
+        { step: "Step 4 • Lip", name: "NYX Fat Oil Lip Drip ($9)", url: "https://www.amazon.com/" }
+      ]
+    };
+
+    let activeCategory = "all";
+    let activeStory = "all";
+    let searchQuery = "";
+    let isSingleCol = false;
+    let savedIds = JSON.parse(localStorage.getItem("us_makeup_saved") || "[]");
+
+    const productsGrid = document.getElementById("productsGrid");
+    const savedCountEl = document.getElementById("savedCount");
+    const navSavedCountEl = document.getElementById("navSavedCount");
+
+    function updateSavedBadges() {
+      savedCountEl.textContent = savedIds.length;
+      navSavedCountEl.textContent = savedIds.length;
+    }
+
+    function toggleSave(id, event) {
+      if (event) event.stopPropagation();
+      if (savedIds.includes(id)) {
+        savedIds = savedIds.filter(item => item !== id);
+      } else {
+        savedIds.push(id);
+      }
+      localStorage.setItem("us_makeup_saved", JSON.stringify(savedIds));
+      updateSavedBadges();
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const filtered = makeupProducts.filter(p => {
+        const matchCat = activeCategory === "all" || p.category === activeCategory;
+        const matchStory = activeStory === "all" || p.story === activeStory;
+        const q = searchQuery.toLowerCase();
+        const matchSearch = !q || p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q) || p.shade.toLowerCase().includes(q);
+        return matchCat && matchStory && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        productsGrid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 32px 16px; color: var(--text-muted); font-size: 13px;">No makeup finds matched your filter. Try clearing your search!</div>`;
+        return;
+      }
+
+      productsGrid.innerHTML = filtered.map(product => {
+        const isSaved = savedIds.includes(product.id);
+        return `
+          <article class="product-card" onclick="openProductModal(${product.id})">
+            <div class="card-img-wrap">
+              <span class="tag-badge">${product.badge}</span>
+              <button class="save-btn" onclick="toggleSave(${product.id}, event)" aria-label="Save item">
+                ${isSaved ? "❤️" : "🤍"}
+              </button>
+              <img src="${product.image}" alt="${product.name}" loading="lazy">
+            </div>
+            <div class="card-body">
+              <div class="brand-name">${product.brand}</div>
+              <h3 class="product-title">${product.name}</h3>
+              <p class="shade-note">${product.shade}</p>
+              <div class="price-row">
+                <span class="price">${product.price}</span>
+                <button class="shop-btn">Shop →</button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function openProductModal(id) {
+      const product = makeupProducts.find(p => p.id === id);
+      if (!product) return;
+
+      document.getElementById("modalImg").src = product.image;
+      document.getElementById("modalBrand").textContent = product.brand;
+      document.getElementById("modalTitle").textContent = `${product.name} — ${product.price}`;
+      document.getElementById("modalShade").textContent = product.shade;
+      document.getElementById("modalReview").textContent = product.review;
+
+      let linksHtml = "";
+      if (product.sephoraUrl) {
+        linksHtml += `<a href="${product.sephoraUrl}" target="_blank" rel="nofollow sponsored noopener" class="retailer-link btn-sephora"><span>Shop at Sephora</span><span>↗</span></a>`;
+      }
+      if (product.ultaUrl) {
+        linksHtml += `<a href="${product.ultaUrl}" target="_blank" rel="nofollow sponsored noopener" class="retailer-link btn-ulta"><span>Shop at Ulta Beauty</span><span>↗</span></a>`;
+      }
+      if (product.amazonUrl) {
+        linksHtml += `<a href="${product.amazonUrl}" target="_blank" rel="nofollow sponsored noopener" class="retailer-link btn-amazon"><span>Shop on Amazon US</span><span>↗</span></a>`;
+      }
+
+      document.getElementById("modalLinks").innerHTML = linksHtml;
+      document.getElementById("productModal").classList.add("open");
+    }
+
+    function openSavedModal() {
+      const container = document.getElementById("savedListContainer");
+      const savedItems = makeupProducts.filter(p => savedIds.includes(p.id));
+
+      if (savedItems.length === 0) {
+        container.innerHTML = `<p style="font-size:13px; color:var(--text-muted); padding:16px 0;">Tap the heart icon on any product to save your favorites here.</p>`;
+      } else {
+        container.innerHTML = savedItems.map(item => `
+          <div class="wishlist-item">
+            <div onclick="closeModals(); openProductModal(${item.id});" style="cursor:pointer;">
+              <div style="font-size:11px; font-weight:700; color:var(--accent);">${item.brand}</div>
+              <div style="font-size:13px; font-weight:600;">${item.name} (${item.price})</div>
+            </div>
+            <button onclick="toggleSave(${item.id}); openSavedModal();" style="background:none; border:none; color:var(--text-muted); font-size:12px; cursor:pointer;">Remove</button>
+          </div>
+        `).join("");
+      }
+      document.getElementById("savedModal").classList.add("open");
+    }
+
+    function closeModals() {
+      document.querySelectorAll(".modal-backdrop").forEach(m => m.classList.remove("open"));
+    }
+
+    function renderRoutine(type) {
+      const list = document.getElementById("routineList");
+      list.innerHTML = routinesData[type].map(item => `
+        <div class="routine-item">
+          <div>
+            <div class="routine-step">${item.step}</div>
+            <div class="routine-name">${item.name}</div>
+          </div>
+          <a href="${item.url}" target="_blank" rel="nofollow sponsored noopener" class="routine-link">Shop</a>
+        </div>
+      `).join("");
+    }
+
+    document.querySelectorAll("#categoryPills .pill-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#categoryPills .pill-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeCategory = btn.dataset.cat;
+        renderProducts();
+      });
+    });
+
+    document.querySelectorAll("#storyFilters .story-item").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#storyFilters .story-item").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeStory = btn.dataset.story;
+        renderProducts();
+      });
+    });
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      searchQuery = e.target.value;
+      renderProducts();
+    });
+
+    document.getElementById("viewToggleBtn").addEventListener("click", (e) => {
+      isSingleCol = !isSingleCol;
+      productsGrid.classList.toggle("single-col", isSingleCol);
+      e.target.textContent = isSingleCol ? "2-Col Grid" : "1-Col View";
+    });
+
+    document.querySelectorAll(".routine-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".routine-tab").forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        renderRoutine(tab.dataset.routine);
+      });
+    });
+
+    document.getElementById("openSavedBtn").addEventListener("click", openSavedModal);
+    document.getElementById("navSavedBtn").addEventListener("click", openSavedModal);
+
+    document.querySelectorAll(".modal-backdrop").forEach(backdrop => {
+      backdrop.addEventListener("click", (e) => {
+        if (e.target === backdrop) closeModals();
+      });
+    });
+
+    updateSavedBadges();
+    renderProducts();
+    renderRoutine("sephora");
+  </script>
+</body>
+</html>
