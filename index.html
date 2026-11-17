@@ -70,10 +70,10 @@
       border-color: #111111;
     }
 
-    /* 1 Column Grid para sa mga Category */
+    /* 2 Columns Grid para sa mga Category */
     .categories-list {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
 
@@ -122,7 +122,7 @@
       <button class="tab-btn" data-cat="remover">Remover</button>
     </div>
 
-    <!-- Category List na purong pangalan lang ng category at nakaka-link sa hiwalay na HTML -->
+    <!-- Category List na may 2 columns bawat row -->
     <div class="categories-list" id="categoriesList"></div>
 
     <footer>
@@ -138,9 +138,9 @@
       { category: "face", title: "BB / CC Cream", link: "bb-cc-cream/bb-cc-cream.html" },
       { category: "face", title: "Primer", link: "primer/primer.html" },
       { category: "face", title: "Face Powder", link: "face-powder/face-powder.html" },
-      { category: "face", title: "Blush", link: "blushblush.html" },
+      { category: "face", title: "Blush", link: "blush/blush.html" },
       { category: "face", title: "Highlighter", link: "highlighter/highlighter.html" },
-      { category: "face", title: "Contour", link: "countour/contour.html" },
+      { category: "face", title: "Contour", link: "contour/contour.html" },
       { category: "face", title: "Setting Spray", link: "setting-spray/setting-spray.html" },
 
       // Eyes
