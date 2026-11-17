@@ -13,7 +13,6 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      /* Dito pinalitan ang background ng buong screen (soft warm nude/beige) */
       background-color: #F7F4F0;
       color: #111111;
       display: flex;
@@ -40,6 +39,25 @@
       font-size: 18px;
       font-weight: 700;
       letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    /* Back button kapag nasa loob ng sub-choices */
+    .back-bar {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #555;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 14px;
+    }
+
+    .back-bar.show {
+      display: flex;
     }
 
     /* Categories sa taas (Scrollable) */
@@ -92,6 +110,7 @@
       font-size: 12px;
       font-weight: 600;
       text-align: left;
+      cursor: pointer;
     }
 
     .choice-btn:active {
@@ -110,8 +129,11 @@
 <body>
   <div class="container">
     <header>
-      <h1>GLOW EDIT</h1>
+      <h1 onclick="resetView()">GLOW EDIT</h1>
     </header>
+
+    <!-- Back button kapag nasa sub-menu -->
+    <button class="back-bar" id="backBtn" onclick="resetView()">← Back to Categories</button>
 
     <!-- Categories sa taas -->
     <div class="top-choices" id="topChoices">
@@ -119,9 +141,9 @@
       <button class="tab-btn" data-cat="face">Face</button>
       <button class="tab-btn" data-cat="eyes">Eyes</button>
       <button class="tab-btn" data-cat="lips">Lips</button>
-      <button class="tab-btn" data-cat="tools">Tools & Accessories</button>
-      <button class="tab-btn" data-cat="remover">Makeup Remover</button>
-      <button class="tab-btn" data-cat="sets">Sets & Kits</button>
+      <button class="tab-btn" data-cat="tools">Tools</button>
+      <button class="tab-btn" data-cat="remover">Remover</button>
+      <button class="tab-btn" data-cat="sets">Sets</button>
     </div>
 
     <!-- Product Choices List (2 Columns Grid) -->
@@ -133,80 +155,269 @@
   </div>
 
   <script>
-    const makeupChoices = [
-      // 1. Face Makeup
-      { category: "face", title: "Foundation", link: "https://www.sephora.com/" },
-      { category: "face", title: "Concealer", link: "https://www.sephora.com/" },
-      { category: "face", title: "BB / CC Cream", link: "https://www.ulta.com/" },
-      { category: "face", title: "Primer", link: "https://www.sephora.com/" },
-      { category: "face", title: "Face Powder", link: "https://www.ulta.com/" },
-      { category: "face", title: "Blush", link: "https://www.sephora.com/" },
-      { category: "face", title: "Highlighter", link: "https://www.sephora.com/" },
-      { category: "face", title: "Contour", link: "https://www.sephora.com/" },
-      { category: "face", title: "Setting Spray", link: "https://www.ulta.com/" },
-
-      // 2. Eye Makeup
-      { category: "eyes", title: "Eyebrow Pencil", link: "https://www.amazon.com/" },
-      { category: "eyes", title: "Eyebrow Gel", link: "https://www.amazon.com/" },
-      { category: "eyes", title: "Eyeshadow", link: "https://www.sephora.com/" },
-      { category: "eyes", title: "Eyeliner", link: "https://www.ulta.com/" },
-      { category: "eyes", title: "Mascara", link: "https://www.amazon.com/" },
-      { category: "eyes", title: "False Eyelashes", link: "https://www.amazon.com/" },
-
-      // 3. Lip Makeup
-      { category: "lips", title: "Lipstick", link: "https://www.sephora.com/" },
-      { category: "lips", title: "Lip Tint", link: "https://www.ulta.com/" },
-      { category: "lips", title: "Lip Gloss", link: "https://www.sephora.com/" },
-      { category: "lips", title: "Lip Balm", link: "https://www.amazon.com/" },
-      { category: "lips", title: "Lip Liner", link: "https://www.ulta.com/" },
-      { category: "lips", title: "Lip Matte", link: "https://www.sephora.com/" },
-
-      // 4. Makeup Tools & Accessories
-      { category: "tools", title: "Makeup Brush", link: "https://www.amazon.com/" },
-      { category: "tools", title: "Beauty Blender", link: "https://www.amazon.com/" },
-      { category: "tools", title: "Makeup Sponge", link: "https://www.amazon.com/" },
-      { category: "tools", title: "Eyelash Curler", link: "https://www.amazon.com/" },
-      { category: "tools", title: "Organizer", link: "https://www.amazon.com/" },
-      { category: "tools", title: "Makeup Mirror", link: "https://www.amazon.com/" },
-
-      // 5. Makeup Remover
-      { category: "remover", title: "Micellar Water", link: "https://www.amazon.com/" },
-      { category: "remover", title: "Cleansing Balm", link: "https://www.ulta.com/" },
-      { category: "remover", title: "Remover Wipes", link: "https://www.amazon.com/" },
-      { category: "remover", title: "Cleansing Oil", link: "https://www.ulta.com/" },
-
-      // 6. Makeup Sets & Kits
-      { category: "sets", title: "Complete Set", link: "https://www.amazon.com/" },
-      { category: "sets", title: "Eyeshadow Palette", link: "https://www.sephora.com/" },
-      { category: "sets", title: "Lipstick Set", link: "https://www.sephora.com/" },
-      { category: "sets", title: "Travel Kit", link: "https://www.amazon.com/" }
+    // 1. MGA SIKAT NA ITEMS PARA SA "ALL" TAB (Featured & Best-Sellers)
+    const featuredChoices = [
+      { title: "Rare Beauty Liquid Blush", subKey: "blush" },
+      { title: "Summer Fridays Lip Balm", subKey: "lip_balm" },
+      { title: "Tower 28 Mascara", subKey: "mascara" },
+      { title: "Urban Decay Setting Spray", subKey: "setting_spray" },
+      { title: "Fenty Beauty Lip Gloss", subKey: "lip_gloss" },
+      { title: "Milk Makeup Primer", subKey: "primer" },
+      { title: "Rare Beauty Foundation", subKey: "foundation" },
+      { title: "Anastasia Eyebrow Pencil", subKey: "eyebrow_pencil" }
     ];
+
+    // 2. MGA MAIN CATEGORIES SA BAWAT TAB
+    const makeupCategories = [
+      // Face
+      { category: "face", title: "Foundation", subKey: "foundation" },
+      { category: "face", title: "Concealer", subKey: "concealer" },
+      { category: "face", title: "BB / CC Cream", subKey: "bb_cc_cream" },
+      { category: "face", title: "Primer", subKey: "primer" },
+      { category: "face", title: "Face Powder", subKey: "face_powder" },
+      { category: "face", title: "Blush", subKey: "blush" },
+      { category: "face", title: "Highlighter", subKey: "highlighter" },
+      { category: "face", title: "Contour", subKey: "contour" },
+      { category: "face", title: "Setting Spray", subKey: "setting_spray" },
+
+      // Eyes
+      { category: "eyes", title: "Eyebrow Pencil", subKey: "eyebrow_pencil" },
+      { category: "eyes", title: "Eyebrow Gel", subKey: "eyebrow_gel" },
+      { category: "eyes", title: "Eyeshadow", subKey: "eyeshadow" },
+      { category: "eyes", title: "Eyeliner", subKey: "eyeliner" },
+      { category: "eyes", title: "Mascara", subKey: "mascara" },
+      { category: "eyes", title: "False Eyelashes", subKey: "false_eyelashes" },
+
+      // Lips
+      { category: "lips", title: "Lipstick", subKey: "lipstick" },
+      { category: "lips", title: "Lip Tint", subKey: "lip_tint" },
+      { category: "lips", title: "Lip Gloss", subKey: "lip_gloss" },
+      { category: "lips", title: "Lip Balm", subKey: "lip_balm" },
+      { category: "lips", title: "Lip Liner", subKey: "lip_liner" },
+      { category: "lips", title: "Lip Matte", subKey: "lip_matte" },
+
+      // Tools
+      { category: "tools", title: "Makeup Brush", subKey: "makeup_brush" },
+      { category: "tools", title: "Beauty Blender", subKey: "beauty_blender" },
+      { category: "tools", title: "Makeup Sponge", subKey: "makeup_sponge" },
+      { category: "tools", title: "Eyelash Curler", subKey: "eyelash_curler" },
+      { category: "tools", title: "Organizer", subKey: "organizer" },
+      { category: "tools", title: "Makeup Mirror", subKey: "makeup_mirror" },
+
+      // Remover
+      { category: "remover", title: "Micellar Water", subKey: "micellar_water" },
+      { category: "remover", title: "Cleansing Balm", subKey: "cleansing_balm" },
+      { category: "remover", title: "Remover Wipes", subKey: "remover_wipes" },
+      { category: "remover", title: "Cleansing Oil", subKey: "cleansing_oil" },
+
+      // Sets
+      { category: "sets", title: "Complete Set", subKey: "complete_set" },
+      { category: "sets", title: "Eyeshadow Palette", subKey: "eyeshadow_palette" },
+      { category: "sets", title: "Lipstick Set", subKey: "lipstick_set" },
+      { category: "sets", title: "Travel Kit", subKey: "travel_kit" }
+    ];
+
+    // 3. MGA BRAND CHOICES SA BAWAT ITEM
+    const subChoicesData = {
+      foundation: [
+        { title: "Rare Beauty Foundation", link: "https://www.sephora.com/" },
+        { title: "Fenty Beauty Foundation", link: "https://www.sephora.com/" },
+        { title: "Maybelline Fit Me", link: "https://www.amazon.com/" }
+      ],
+      concealer: [
+        { title: "Kosås Concealer", link: "https://www.sephora.com/" },
+        { title: "Tarte Shape Tape", link: "https://www.ulta.com/" }
+      ],
+      bb_cc_cream: [
+        { title: "Erborian CC Cream", link: "https://www.sephora.com/" },
+        { title: "IT Cosmetics CC+", link: "https://www.ulta.com/" }
+      ],
+      primer: [
+        { title: "Milk Makeup Hydro Grip", link: "https://www.sephora.com/" },
+        { title: "e.l.f. Power Grip Primer", link: "https://www.ulta.com/" }
+      ],
+      face_powder: [
+        { title: "Laura Mercier Powder", link: "https://www.sephora.com/" },
+        { title: "Huda Beauty Powder", link: "https://www.sephora.com/" }
+      ],
+      blush: [
+        { title: "Rare Beauty Liquid Blush", link: "https://www.sephora.com/" },
+        { title: "Milani Liquid Blush", link: "https://www.ulta.com/" }
+      ],
+      highlighter: [
+        { title: "Rare Beauty Highlighter", link: "https://www.sephora.com/" },
+        { title: "Fenty Beauty Killawatt", link: "https://www.sephora.com/" }
+      ],
+      contour: [
+        { title: "Fenty Match Stix", link: "https://www.sephora.com/" },
+        { title: "Charlotte Tilbury Wand", link: "https://www.sephora.com/" }
+      ],
+      setting_spray: [
+        { title: "Urban Decay All Nighter", link: "https://www.ulta.com/" },
+        { title: "Charlotte Tilbury Spray", link: "https://www.sephora.com/" }
+      ],
+      eyebrow_pencil: [
+        { title: "Anastasia Beverly Hills", link: "https://www.sephora.com/" },
+        { title: "NYX Micro Brow", link: "https://www.amazon.com/" }
+      ],
+      eyebrow_gel: [
+        { title: "Benefit 24-HR Brow Setter", link: "https://www.ulta.com/" },
+        { title: "NYX Control Freak", link: "https://www.amazon.com/" }
+      ],
+      eyeshadow: [
+        { title: "Urban Decay Naked", link: "https://www.ulta.com/" },
+        { title: "Makeup By Mario", link: "https://www.sephora.com/" }
+      ],
+      eyeliner: [
+        { title: "KVD Tattoo Liner", link: "https://www.sephora.com/" },
+        { title: "Stila Stay All Day", link: "https://www.ulta.com/" }
+      ],
+      mascara: [
+        { title: "Tower 28 MakeWaves", link: "https://www.sephora.com/" },
+        { title: "Maybelline Sky High", link: "https://www.amazon.com/" }
+      ],
+      false_eyelashes: [
+        { title: "Ardell Wispies", link: "https://www.amazon.com/" },
+        { title: "Kiss Falscara", link: "https://www.ulta.com/" }
+      ],
+      lipstick: [
+        { title: "MAC Lipstick", link: "https://www.ulta.com/" },
+        { title: "Charlotte Tilbury Matte", link: "https://www.sephora.com/" }
+      ],
+      lip_tint: [
+        { title: "Benetint Lip Stain", link: "https://www.sephora.com/" },
+        { title: "Rom&nd Tint", link: "https://www.amazon.com/" }
+      ],
+      lip_gloss: [
+        { title: "Fenty Gloss Bomb", link: "https://www.sephora.com/" },
+        { title: "NYX Fat Oil", link: "https://www.amazon.com/" }
+      ],
+      lip_balm: [
+        { title: "Summer Fridays Lip Butter", link: "https://www.sephora.com/" },
+        { title: "Laneige Lip Balm", link: "https://www.sephora.com/" }
+      ],
+      lip_liner: [
+        { title: "Makeup Forever Pencil", link: "https://www.sephora.com/" },
+        { title: "NYX Slim Lip Pencil", link: "https://www.amazon.com/" }
+      ],
+      lip_matte: [
+        { title: "Maybelline Super Stay", link: "https://www.amazon.com/" },
+        { title: "Huda Beauty Liquid Matte", link: "https://www.sephora.com/" }
+      ],
+      makeup_brush: [
+        { title: "Real Techniques Set", link: "https://www.amazon.com/" },
+        { title: "It Cosmetics Brushes", link: "https://www.ulta.com/" }
+      ],
+      beauty_blender: [
+        { title: "Original Beautyblender", link: "https://www.sephora.com/" },
+        { title: "Real Techniques Sponge", link: "https://www.amazon.com/" }
+      ],
+      makeup_sponge: [
+        { title: "EcoTools Sponge", link: "https://www.amazon.com/" }
+      ],
+      eyelash_curler: [
+        { title: "Shiseido Eyelash Curler", link: "https://www.sephora.com/" },
+        { title: "Tweezerman Curler", link: "https://www.amazon.com/" }
+      ],
+      organizer: [
+        { title: "Clear Acrylic Organizer", link: "https://www.amazon.com/" }
+      ],
+      makeup_mirror: [
+        { title: "Lighted Vanity Mirror", link: "https://www.amazon.com/" }
+      ],
+      micellar_water: [
+        { title: "Bioderma Micellar Water", link: "https://www.amazon.com/" },
+        { title: "Garnier SkinActive", link: "https://www.amazon.com/" }
+      ],
+      cleansing_balm: [
+        { title: "Banila Co Clean It Zero", link: "https://www.amazon.com/" },
+        { title: "Clinique Take The Day Off", link: "https://www.sephora.com/" }
+      ],
+      remover_wipes: [
+        { title: "Neutrogena Wipes", link: "https://www.amazon.com/" }
+      ],
+      cleansing_oil: [
+        { title: "DHC Deep Cleansing Oil", link: "https://www.amazon.com/" },
+        { title: "Anua Pore Cleansing Oil", link: "https://www.amazon.com/" }
+      ],
+      complete_set: [
+        { title: "Sephora Favorites Kit", link: "https://www.sephora.com/" }
+      ],
+      eyeshadow_palette: [
+        { title: "Anastasia Modern Renaissance", link: "https://www.ulta.com/" }
+      ],
+      lipstick_set: [
+        { title: "Mini Lipstick Vault", link: "https://www.sephora.com/" }
+      ],
+      travel_kit: [
+        { title: "TSA Approved Makeup Bag", link: "https://www.amazon.com/" }
+      ]
+    };
 
     const list = document.getElementById("choicesList");
     const buttons = document.querySelectorAll(".tab-btn");
+    const backBtn = document.getElementById("backBtn");
+    const topChoicesBar = document.getElementById("topChoices");
 
-    function renderChoices(selectedCat = "all") {
-      const filtered = selectedCat === "all"
-        ? makeupChoices
-        : makeupChoices.filter(item => item.category === selectedCat);
+    let activeCategory = "all";
 
-      list.innerHTML = filtered.map(item => `
-        <a href="${item.link}" target="_blank" rel="nofollow sponsored noopener" class="choice-btn">
+    function renderMainChoices(selectedCat = "all") {
+      backBtn.classList.remove("show");
+      topChoicesBar.style.display = "flex";
+      activeCategory = selectedCat;
+
+      const itemsToDisplay = selectedCat === "all"
+        ? featuredChoices
+        : makeupCategories.filter(item => item.category === selectedCat);
+
+      list.innerHTML = itemsToDisplay.map(item => `
+        <button class="choice-btn" onclick="openSubChoices('${item.subKey}', '${item.title}')">
           <span>${item.title}</span>
           <span>→</span>
+        </button>
+      `).join("");
+    }
+
+    function openSubChoices(subKey, titleName) {
+      backBtn.classList.add("show");
+      topChoicesBar.style.display = "none";
+
+      const items = subChoicesData[subKey] || [];
+
+      if (items.length === 0) {
+        list.innerHTML = `
+          <div style="grid-column: 1 / -1; font-size: 13px; color: #777; text-align: center; padding: 20px;">
+            Wala pang choices para dito. Pwede mong idagdag sa code!
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = `
+        <div style="grid-column: 1 / -1; font-size: 14px; font-weight: 700; margin-bottom: 4px; color: #333;">
+          ${titleName} Choices:
+        </div>
+      ` + items.map(sub => `
+        <a href="${sub.link}" target="_blank" rel="nofollow sponsored noopener" class="choice-btn">
+          <span>${sub.title}</span>
+          <span>↗</span>
         </a>
       `).join("");
+    }
+
+    function resetView() {
+      renderMainChoices(activeCategory);
     }
 
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
         buttons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-        renderChoices(btn.dataset.cat);
+        renderMainChoices(btn.dataset.cat);
       });
     });
 
-    renderChoices();
+    renderMainChoices();
   </script>
 </body>
 </html>
